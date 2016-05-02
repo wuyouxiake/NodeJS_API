@@ -1,0 +1,30 @@
+<html>
+<head><title>Delete User</title></head>
+<body>
+
+	User Id: <input name="userid" type="text" />
+	<button onclick="func()">Submit</button>
+
+<br>
+<br>
+<p id="demo"></p>
+</body>
+
+<script>
+function func(){
+	alert(document.getElementById('userid').val);
+	var xmlhttp = new XMLHttpRequest();
+	var url = "http://localhost:8081/listUsers";
+	xmlhttp.onreadystatechange = function() {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        var myArr = JSON.parse(xmlhttp.responseText);
+        //myFunction(myArr);
+    }
+	};
+	xmlhttp.open("GET", url, true);
+	xmlhttp.send();
+	document.getElementById('demo').innerHTML = myArr;
+	
+}
+</script>
+</html>
